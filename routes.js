@@ -3,12 +3,12 @@ let express = require('express');
 let router = express.Router();              
 
 // Import contact controller
-var userController = require('./controllers/user_controller');
+var userController = require('./controllers/userController');
 
-router.get('/user', userController.home);
+router.get('/user', userController.userList);
 
-router.get('/user/add', userController.add);
+router.get('/user/add', userController.userAdd);
 
-router.post('/user', userController.new);
+router.post('/user', userController.userSave);
 
  module.exports = router;
