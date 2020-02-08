@@ -1,5 +1,5 @@
 // Import contact model
-let user = require('../models/userModel');
+let User = require('../models/userModel');
 let userList = [];
 
 exports.userList = function (req, res) {
@@ -11,11 +11,10 @@ exports.userList = function (req, res) {
  }
 
  exports.userSave = function (req, res) {
-    let user =  new user();
-    user.lastname = req.body.lastname;
-    user.firstname = req.body.firstname;
-
+    let user =  new User(req.body.lastname, req.body.firstname );
     userList.push(user);
+    console.log(userList);
+    
     res.render('userList.ejs',{message : 'user created', users: userList});
 };
 
