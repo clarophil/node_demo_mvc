@@ -2,9 +2,10 @@ let express    = require('express');        // call express
 let app        = express();                 // define our app using express
 
 // Configure bodyparser to handle POST requests
-let bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Static content
+app.use(express.static('public'))
 
 // Import routes
 let router = require('./routes');

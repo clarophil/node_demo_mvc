@@ -9,6 +9,12 @@ exports.userList = function (req, res) {
     res.render('userList.ejs', {users:userList});
 }
 
+// Detail user
+exports.userDetail = function (req, res) {
+    let user = new User('Dupont','Paul');
+    res.render('userDetail.ejs', { user });
+}
+
 // Add or update one user in the list
 exports.userNew =  function(req, res) {
     let iduser = req.body.iduser
@@ -21,14 +27,14 @@ exports.userNew =  function(req, res) {
     }
     else if( iduser >=0 )
     {
-        //userList[iduser]['firstname'] = firstname;
-        //userList[iduser]['lastname'] = lastname;
-        let user = new User(lastname,firstname);
-        userList[iduser] = user;
+        userList[iduser]['firstname'] = firstname;
+        userList[iduser]['lastname'] = lastname;
+        // let user = new User(lastname,firstname);
+        // userList[iduser] = user;
     }
     console.log(userList);
     
-    res.redirect('/user');
+    res.redirect('/users');
 }
 
 // Send form to update user
@@ -44,5 +50,5 @@ exports.userFormUpdate =function (req, res) {
 
 exports.userRemove = function (req, res) {
     userList.splice(req.params.iduser,1);
-    res.redirect('/user');
+    res.redirect('/users');
  };
