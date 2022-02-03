@@ -1,9 +1,9 @@
 <h1>Ajouter une utilisateurs</h1>
-<form action="/user/new" method="POST">
+<form action="/user/save" method="POST">
     Nom : 
-    <input type="text" name="lastname" value="<%= lastname %>" ><br>
+    <input type="text" name="lastname" value="<%= user.lastname %>" ><br>
     Prénom : 
-    <input type="text" name="firstname" value="<%= firstname %>"><br>
+    <input type="text" name="firstname" value="<%= user.firstname %>"><br>
     <input type="hidden" name="iduser" value="<%= iduser %>" >
     <input type="submit" name="save" value="Sauver"><br>
     <input type="submit"value="Retour à la liste" formaction="/user"> 

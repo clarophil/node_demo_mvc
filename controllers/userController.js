@@ -16,7 +16,8 @@ exports.userDetail = function (req, res) {
 }
 
 // Add or update one user in the list
-exports.userNew =  function(req, res) {
+exports.userSave =  function(req, res) {
+    console.log(req.body);
     let iduser = req.body.iduser
     let lastname =  req.body.lastname;
     let firstname = req.body.firstname;
@@ -27,10 +28,8 @@ exports.userNew =  function(req, res) {
     }
     else if( iduser >=0 )
     {
-        userList[iduser]['firstname'] = firstname;
-        userList[iduser]['lastname'] = lastname;
-        // let user = new User(lastname,firstname);
-        // userList[iduser] = user;
+        let user = new User(lastname,firstname);
+        userList[iduser] = user;
     }
     console.log(userList);
     
@@ -39,13 +38,14 @@ exports.userNew =  function(req, res) {
 
 // Send form to update user
 exports.userFormAdd = function(req, res) {
-    res.render('userAdd.ejs', {iduser:'-1', lastname:"", firstname:""});
+    let user = new User('', '');
+    res.render('userAdd.ejs', { iduser: '-1', user : user });
 }
 
 // Send user form update
 exports.userFormUpdate =function (req, res) {
     let iduser = req.params.iduser;
-    res.render('userAdd.ejs', {iduser:iduser, lastname:userList[iduser].lastname, firstname:userList[iduser].firstname});
+    res.render('userAdd.ejs', { iduser: iduser, user :  userList[iduser] });
 }
 
 exports.userRemove = function (req, res) {
