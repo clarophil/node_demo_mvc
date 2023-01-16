@@ -21,20 +21,27 @@ exports.userSave =  function(req, res) {
     let iduser = req.body.iduser
     let lastname =  req.body.lastname;
     let firstname = req.body.firstname;
-    if ( iduser == -1)
+    if ( firstname && lastname)
     {
-        let user = new User(lastname,firstname);
-        userList.push(user);
+        if ( iduser == -1)
+        {
+            let user = new User(lastname,firstname);
+            userList.push(user);
+        }
+        else if( iduser >=0 )
+        {
+            let user = new User(lastname,firstname);
+            userList[iduser] = user;
+        }
+        console.log(userList);
+        
+        res.redirect('/user/list');
     }
-    else if( iduser >=0 )
-    {
-        let user = new User(lastname,firstname);
-        userList[iduser] = user;
+    else {
+        res.status(422).redirect('/user/add');
     }
-    console.log(userList);
-    
-    res.redirect('/users');
 }
+
 
 // Send form to update user
 exports.userFormAdd = function(req, res) {
@@ -50,5 +57,5 @@ exports.userFormUpdate =function (req, res) {
 
 exports.userRemove = function (req, res) {
     userList.splice(req.params.iduser,1);
-    res.redirect('/users');
+    res.redirect('/user/list');
  };

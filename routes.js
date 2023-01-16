@@ -5,9 +5,9 @@ let router = express.Router();
 // Import contact controller
 var userController = require('./controllers/userController');
 
-router.get('/', (request, response) => response.redirect('/users'));
+router.get('/', (request, response) => response.redirect('/user/list'));
 
-router.get('/users', userController.userList);
+router.get('/user/list', userController.userList);
 router.get('/user/detail', userController.userDetail);
 router.get('/user/add', userController.userFormAdd);
 router.post('/user/save', userController.userSave);
