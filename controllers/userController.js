@@ -38,6 +38,7 @@ exports.userSave =  function(req, res) {
         res.redirect('/user/list');
     }
     else {
+        let user = new User(lastname, firstname);
         res.status(422).render('userAdd.ejs', { iduser: '-1', user: user });
     }
 }
