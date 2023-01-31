@@ -35,7 +35,7 @@ exports.userSave =  function(req, res) {
         }
         console.log(userList);
         
-        res.redirect('/user/list');
+        res.redirect('/list');
     }
     else {
         let user = new User(lastname, firstname);
@@ -53,10 +53,10 @@ exports.userFormAdd = function(req, res) {
 // Send user form update
 exports.userFormUpdate =function (req, res) {
     let iduser = req.params.iduser;
-    res.render('userAdd.ejs', { iduser: iduser, user :  userList[iduser] });
+    res.render('userAdd.ejs', { iduser: iduser, user: userList[iduser] });
 }
 
 exports.userRemove = function (req, res) {
     userList.splice(req.params.iduser,1);
-    res.redirect('/user/list');
+    res.redirect('/list');
  };
