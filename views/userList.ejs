@@ -1,17 +1,17 @@
 <html>
 <head>
     <title>List Users</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <meta charset='utf-8'>
 </head>
 <body>
-    <a href="./add">Ajouter un nom</a>
+    <a href="../add/">Ajouter un nom</a>
     <h1>Liste des utilisateurs</h1>
     <ul>
         <% for (let i = 0 ;  i < users.length ; i++) { %>
         <li><%= users[i].lastname%> <%= users[i].firstname %> 
-            <a href="./update/<%= i %>">Modifier</a> 
-            <a href="./delete/<%= i %>">Effacer</a>
+            <a href="../update/<%= i %>">Modifier</a> 
+            <a href="../delete/<%= i %>">Effacer</a>
         </li> 
         <% } %>
     </ul>

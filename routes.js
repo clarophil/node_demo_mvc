@@ -7,10 +7,10 @@ var userController = require('./controllers/userController');
 
 router.get('/', (request, response) => response.redirect('/list'));
 
-router.get('/list', userController.userList);
-router.get('/detail', userController.userDetail);
-router.get('/add', userController.userFormAdd);
-router.post('/save', userController.userSave);
+router.get('/list/', userController.userList);
+router.get('/detail/', userController.userDetail);
+router.get('/add/', userController.userFormAdd);
+router.post('/save/', userController.userSave);
 router.get('/update/:iduser', userController.userFormUpdate);
 router.get('/delete/:iduser', userController.userRemove);
 
